@@ -1,0 +1,13 @@
+[Unit]
+Description=Restart WPA supplicant service
+Requires=sys-subsystem-net-devices-%i.device
+After=sys-subsystem-net-devices-%i.device
+Before=network.target
+Wants=network.target
+
+[Service]
+ExecStart=/usr/bin/systemctl restart wpa_supplicant@%i
+
+[Install]
+Alias=multi-user.target.wants/wpa_supplicant@%i.path
+

@@ -1,0 +1,10 @@
+[Unit]
+Description=BSN First Boot
+ConditionPathExists=!/var/log/node-hub/firstboot.log
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bsn-firstboot
+
+[Install]
+WantedBy=multi-user.target

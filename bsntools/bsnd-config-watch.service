@@ -1,0 +1,11 @@
+[Unit]
+Requisite=bsnd.service
+After=bsnd.service
+Description=Restart BSN daemon if config file changes
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/systemctl reload bsnd
+
+[Install]
+WantedBy=multi-user.target

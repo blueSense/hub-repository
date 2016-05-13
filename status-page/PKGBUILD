@@ -1,0 +1,33 @@
+# Maintainer: Your Name <nemanja@blusensenetworks.com>
+pkgname=bsn-status-page
+pkgver=0.0.4
+pkgrel=2
+pkgdesc="A status page that shows the current state of the unit"
+arch=('armv7h')
+url=""
+license=('GPL')
+groups=('bsn')
+depends=('nodejs' 'npm' 'iproute2')
+makedepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=(!emptydirs)
+install=
+source=(
+  git+https://github.com/BlueSenseNetworks/hub-status-page.git#tag=v${pkgver}
+  bsn-status-page.service
+)
+md5sums=(
+  'SKIP'
+  'SKIP'
+)
+
+package() {
+  cd hub-status-page
+
+  install -D -m644 "${srcdir}/bsn-status-page.service" "${pkgdir}/usr/lib/systemd/system/bsn-status-page.service"
+
+  npm install --production -g --prefix "$pkgdir/usr" .
+}

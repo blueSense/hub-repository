@@ -1,0 +1,9 @@
+/var/log/node-hub/* {
+   missingok
+   rotate 5
+   size 100m
+   sharedscripts
+   postrotate
+      /usr/bin/systemctl reload bsnd.service 2>/dev/null || true
+   endscript
+}

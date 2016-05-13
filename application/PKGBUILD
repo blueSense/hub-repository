@@ -1,0 +1,33 @@
+# Maintainer: Nemanja Tosic <nemanja@bluesensenetworks.com>
+pkgname=bsn-node-hub
+pkgver=1.0.2
+pkgrel=4
+pkgdesc="The supernode application"
+arch=('armv7h')
+url=""
+license=('GPL')
+groups=()
+depends=('nodejs' 'npm' 'bluez' 'bluez-utils')
+makedepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=(!emptydirs)
+install=
+source=(
+  git+https://github.com/BlueSenseNetworks/hub-application.git#branch=master
+  bsn-node-hub.service
+)
+md5sums=(
+  'SKIP'
+  'SKIP'
+)
+
+package() {
+  cd hub-application
+
+  install -D -m644 "${srcdir}/bsn-node-hub.service" "${pkgdir}/usr/lib/systemd/system/bsn-node-hub.service"
+
+  npm install --production -g --prefix "$pkgdir/usr" .
+}

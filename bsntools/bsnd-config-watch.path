@@ -1,0 +1,8 @@
+[Unit]
+Description=Restart daemon if config file changes
+
+[Path]
+PathChanged=/etc/bsn/bsnd.ini
+
+[Install]
+WantedBy=multi-user.target

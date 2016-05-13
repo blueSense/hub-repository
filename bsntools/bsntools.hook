@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = bsntools
+Target = bsn-status-page
+
+[Action]
+Description = Restart bsnd on bsntools update
+When = PostTransaction
+# daemon reload updates all units, which enables us to change timer intervals
+# bsnd is restarted only if it is running
+Exec = /bin/sh -c "systemctl daemon-reload; bsn-prepare-services --start || true"
+Depends = bsntools

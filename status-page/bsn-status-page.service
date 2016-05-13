@@ -1,0 +1,11 @@
+[Unit]
+Description=BSN hub status page
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bsn-hub-status-page-daemon
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,66 @@
+# Maintainer: Your Name <nemanja@blusensenetworks.com>
+pkgname=bsntools
+pkgver=1.3.8
+pkgrel=8
+pkgdesc="A daemon that polls and updates the BSN docker image"
+arch=('armv7h')
+url=""
+license=('GPL')
+groups=('bsn')
+depends=('python2' 'python2-setuptools' 'docker' 'parted' 'bluez' 'bluez-utils')
+makedepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=('etc/bsn/bsnd.ini')
+options=(!emptydirs)
+install=
+source=(
+  git+ssh://git@bitbucket.org/bluesensenetworks/bsntools.git#tag=v${pkgver}
+  bsnd.ini
+  bsnd.service
+  bsn-firstboot.service
+  bsntools-autoupdate.service
+  bsntools-autoupdate.timer
+  bsntools.hook
+  bsn.logrotate
+  bsnd-config-watch.service
+  bsnd-config-watch.path
+  restart-wpa_supplicant@.path
+  restart-wpa_supplicant@.service
+  bluetooth-auto-power@.service
+)
+md5sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
+
+package() {
+  cd bsntools
+
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+
+  install -D -m644 "${srcdir}/bsnd.ini" "${pkgdir}/etc/bsn/bsnd.ini"
+  install -D -m644 "${srcdir}/bsnd.service" "${pkgdir}/usr/lib/systemd/system/bsnd.service"
+  install -D -m644 "${srcdir}/bsn-firstboot.service" "${pkgdir}/usr/lib/systemd/system/bsn-firstboot.service"
+  install -D -m644 "${srcdir}/bsntools-autoupdate.service" "${pkgdir}/usr/lib/systemd/system/bsntools-autoupdate.service"
+  install -D -m644 "${srcdir}/bsntools-autoupdate.timer" "${pkgdir}/usr/lib/systemd/system/bsntools-autoupdate.timer"
+  install -D -m644 "${srcdir}/bsntools.hook" "${pkgdir}/etc/pacman.d/hooks/bsntools.hook"
+  install -D -m644 "${srcdir}/bsn.logrotate" "${pkgdir}/etc/logrotate.d/bsn"
+  install -D -m644 "${srcdir}/bsnd-config-watch.service" "${pkgdir}/usr/lib/systemd/system/bsnd-config-watch.service"
+  install -D -m644 "${srcdir}/bsnd-config-watch.path" "${pkgdir}/usr/lib/systemd/system/bsnd-config-watch.path"
+  install -D -m644 "${srcdir}/restart-wpa_supplicant@.path" "${pkgdir}/usr/lib/systemd/system/restart-wpa_supplicant@.path"
+  install -D -m644 "${srcdir}/restart-wpa_supplicant@.service" "${pkgdir}/usr/lib/systemd/system/restart-wpa_supplicant@.service"
+  install -D -m644 "${srcdir}/bluetooth-auto-power@.service" "${pkgdir}/usr/lib/systemd/system/bluetooth-auto-power@.service"
+}

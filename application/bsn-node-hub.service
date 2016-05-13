@@ -1,0 +1,11 @@
+[Unit]
+Description=BSN hub
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node-hub
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+[Unit]
+Description=WPA supplicant restart on config change
+Requires=sys-subsystem-net-devices-%i.device
+After=sys-subsystem-net-devices-%i.device
+Before=network.target
+Wants=network.target
+
+[Path]
+PathChanged=/etc/wpa_supplicant/wpa_supplicant-%i.conf
+
+[Install]
+Alias=multi-user.target.wants/wpa_supplicant@%i.path
+
