@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = bsn-autoupdate
+
+[Action]
+When = PostTransaction
+Exec = /bin/sh -c "systemctl daemon-reload; systemctl reload-or-restart bsnd"
+Depends = bsn-autoupdate

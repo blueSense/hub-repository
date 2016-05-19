@@ -1,9 +1,9 @@
 [Unit]
-Description=BlueSense Networks system daemon
+Description=BlueSense Networks autoupdate daemon
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/bsnd start
+ExecStart=/usr/bin/bsn-autoupdate
 ExecReload=/usr/bin/kill -HUP $MAINPID
 Restart=always
 

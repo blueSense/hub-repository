@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/pacman -Sy --noconfirm --needed bsn
+ExecStart=/usr/bin/pacman -Sy --noconfirm --needed bsn-autoupdate
 TimeoutStopSec=180
 KillMode=process
 KillSignal=SIGINT

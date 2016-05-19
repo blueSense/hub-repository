@@ -1,12 +1,12 @@
 # Maintainer: Nemanja Tosic <nemanja@bluesensenetworks.com>
-pkgname=bsn-node-hub
+pkgname=bsn-supernode
 pkgver=1.0.2
-pkgrel=4
+pkgrel=3
 pkgdesc="The supernode application"
-arch=('armv7h')
+arch=('armv7h' 'x86_64')
 url=""
 license=('GPL')
-groups=()
+groups=('bsn')
 depends=('nodejs' 'npm' 'bluez' 'bluez-utils')
 makedepends=()
 provides=()
@@ -17,7 +17,7 @@ options=(!emptydirs)
 install=
 source=(
   git+https://github.com/BlueSenseNetworks/hub-application.git#branch=master
-  bsn-node-hub.service
+  bsn-supernode.service
 )
 md5sums=(
   'SKIP'
@@ -27,7 +27,7 @@ md5sums=(
 package() {
   cd hub-application
 
-  install -D -m644 "${srcdir}/bsn-node-hub.service" "${pkgdir}/usr/lib/systemd/system/bsn-node-hub.service"
+  install -D -m644 "${srcdir}/bsn-supernode.service" "${pkgdir}/usr/lib/systemd/system/bsn-supernode.service"
 
   npm install --production -g --prefix "$pkgdir/usr" .
 }

@@ -2,12 +2,13 @@ clean:
 	rm -rf repo/
 
 build-packages: clean
-	cd bsntools && makepkg -s;\
-	cd ../status-page && makepkg -s;\
-	cd ../application && makepkg -s
+	cd base && makepkg -s --noconfirm || true;\
+	cd ../status-page && makepkg -s --noconfirm || true;\
+    cd ../autoupdate && makepkg -s --noconfirm || true;\
+	cd ../supernode && makepkg -s --noconfirm || true
 
 create-repo: build-packages
-	mkdir repo && mv */*.pkg.tar.xz repo && repo-add repo/bsn.db.tar.gz repo/*.pkg.tar.xz
+	mkdir repo && cp */*.pkg.tar.xz repo && repo-add repo/bsn.db.tar.gz repo/*.pkg.tar.xz
 
 sync-repo:
 	cd repo && rsync -avz . ${repo_path}

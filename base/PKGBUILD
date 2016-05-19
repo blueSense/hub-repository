@@ -1,0 +1,48 @@
+# Maintainer: Your Name <nemanja@blusensenetworks.com>
+pkgname=bsn-base
+pkgver=0.0.1
+pkgrel=1
+pkgdesc=""
+arch=('armv7h' 'x86_64')
+url=""
+license=('GPL')
+groups=('bsn')
+depends=('python2' 'python2-setuptools')
+makedepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=(!emptydirs)
+install=
+source=(
+  git+https://github.com/BlueSenseNetworks/hub-bsntools.git#branch=master
+  bsn-firstboot.service
+  bsn.logrotate
+  restart-wpa_supplicant@.path
+  restart-wpa_supplicant@.service
+  bluetooth-auto-power@.service
+  wpa_supplicant-wlan0.conf
+)
+md5sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
+
+package() {
+  cd hub-bsntools
+
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+
+  install -D -m644 "${srcdir}/bsn-firstboot.service" "${pkgdir}/usr/lib/systemd/system/bsn-firstboot.service"
+  install -D -m644 "${srcdir}/bsn.logrotate" "${pkgdir}/etc/logrotate.d/bsn"
+  install -D -m644 "${srcdir}/restart-wpa_supplicant@.path" "${pkgdir}/usr/lib/systemd/system/restart-wpa_supplicant@.path"
+  install -D -m644 "${srcdir}/restart-wpa_supplicant@.service" "${pkgdir}/usr/lib/systemd/system/restart-wpa_supplicant@.service"
+  install -D -m644 "${srcdir}/bluetooth-auto-power@.service" "${pkgdir}/usr/lib/systemd/system/bluetooth-auto-power@.service"
+  install -D -m644 "${srcdir}/wpa_supplicant-wlan0.conf" "${pkgdir}/etc/wpa_supplicant/wpa_supplicant-wlan0.conf"
+}

@@ -1,0 +1,51 @@
+# Maintainer: Your Name <nemanja@blusensenetworks.com>
+pkgname=bsn-autoupdate
+pkgver=0.0.1
+pkgrel=1
+pkgdesc=""
+arch=('armv7h' 'x86_64')
+url=""
+license=('GPL')
+groups=('bsn')
+depends=('python2')
+makedepends=('python2-setuptools')
+provides=()
+conflicts=()
+replaces=()
+backup=('etc/bsn/bsnd.ini')
+options=(!emptydirs)
+install=
+source=(
+  git+https://github.com/BlueSenseNetworks/hub-autoupdate.git#branch=master
+  bsn-autoupdate.service
+  bsn-autoupdate.timer
+  bsn-autoupdate.hook
+  bsn-config-watch.service
+  bsn-config-watch.path
+  bsnd.service
+  bsnd.ini
+)
+md5sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
+
+package() {
+  cd hub-autoupdate
+
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+  
+  install -D -m644 "${srcdir}/bsnd.ini" "${pkgdir}/etc/bsn/bsnd.ini"
+  install -D -m644 "${srcdir}/bsn-autoupdate.timer" "${pkgdir}/usr/lib/systemd/system/bsn-autoupdate.timer"
+  install -D -m644 "${srcdir}/bsn-autoupdate.service" "${pkgdir}/usr/lib/systemd/system/bsn-autoupdate.service"
+  install -D -m644 "${srcdir}/bsn-config-watch.path" "${pkgdir}/usr/lib/systemd/system/bsn-config-watch.path"
+  install -D -m644 "${srcdir}/bsn-config-watch.service" "${pkgdir}/usr/lib/systemd/system/bsn-config-watch.service"
+  install -D -m644 "${srcdir}/bsn-autoupdate.hook" "${pkgdir}/etc/pacman.d/hooks/bsn-autoupdate.hook"
+  install -D -m644 "${srcdir}/bsnd.service" "${pkgdir}/usr/lib/systemd/system/bsnd.service"
+}
