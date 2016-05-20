@@ -1,8 +1,9 @@
 [Unit]
 Description=Automatic update BSN group when booted up after 5 minutes then check the system for updates every 60 minutes
+After=network.target
 
 [Timer]
-OnBootSec=5min
+OnBootSec=1min
 OnUnitInactiveSec=15min
 RandomizedDelaySec=5min
 Unit=bsn-autoupdate.service
