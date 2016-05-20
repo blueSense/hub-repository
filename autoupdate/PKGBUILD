@@ -1,14 +1,14 @@
 # Maintainer: Your Name <nemanja@blusensenetworks.com>
 pkgname=bsn-autoupdate
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('armv7h' 'x86_64')
 url=""
 license=('GPL')
 groups=('bsn')
-depends=('python2')
-makedepends=('python2-setuptools')
+depends=('python2' 'python2-setuptools')
+makedepends=()
 provides=()
 conflicts=()
 replaces=()
