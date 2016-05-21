@@ -1,6 +1,6 @@
 # Maintainer: Your Name <nemanja@blusensenetworks.com>
 pkgname=bsn-autoupdate
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc=""
 arch=('armv7h' 'x86_64')
