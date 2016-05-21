@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = bsn-status-page
+
+[Action]
+When = PostTransaction
+Exec = /bin/sh -c "systemctl daemon-reload; systemctl try-restart bsn-status-page"
+Depends = bsn-status-page

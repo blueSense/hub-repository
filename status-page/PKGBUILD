@@ -1,7 +1,7 @@
 # Maintainer: Nemanja Tosic <nemanja@bluesensenetworks.com>
 pkgname=bsn-status-page
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A status page that shows the current state of the unit"
 arch=('armv7h' 'x86_64')
 url=""
@@ -18,8 +18,10 @@ install=
 source=(
   git+https://github.com/BlueSenseNetworks/hub-status-page.git#tag=v${pkgver}
   bsn-status-page.service
+  bsn-status-page.hook
 )
 md5sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
 )
@@ -28,6 +30,7 @@ package() {
   cd hub-status-page
 
   install -D -m644 "${srcdir}/bsn-status-page.service" "${pkgdir}/usr/lib/systemd/system/bsn-status-page.service"
+  install -D -m644 "${srcdir}/bsn-status-page.hook" "${pkgdir}/etc/pacman.d/hooks/bsn-status-page.hook"
 
   npm install --production -g --prefix "$pkgdir/usr" .
 }
