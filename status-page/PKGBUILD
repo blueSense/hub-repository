@@ -1,7 +1,7 @@
 # Maintainer: Nemanja Tosic <nemanja@bluesensenetworks.com>
 pkgname=bsn-status-page
-pkgver=0.0.4
-pkgrel=2
+pkgver=0.0.7
+pkgrel=1
 pkgdesc="A status page that shows the current state of the unit"
 arch=('armv7h' 'x86_64')
 url=""
