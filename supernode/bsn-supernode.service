@@ -6,6 +6,7 @@ After=network.target
 Type=simple
 ExecStart=/usr/bin/node-hub
 Restart=always
+EnvironmentFile=/etc/environment
 
 [Install]
 WantedBy=multi-user.target
