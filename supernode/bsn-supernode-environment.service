@@ -1,0 +1,10 @@
+[Unit]
+Requisite=bsn-supernode.service
+After=bsn-supernode.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/systemctl try-restart bsn-supernode
+
+[Install]
+WantedBy=multi-user.target
