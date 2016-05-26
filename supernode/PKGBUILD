@@ -1,6 +1,6 @@
 # Maintainer: Nemanja Tosic <nemanja@bluesensenetworks.com>
 pkgname=bsn-supernode
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="The supernode application"
 arch=('armv7h' 'x86_64')
