@@ -1,7 +1,7 @@
 # Maintainer: Nemanja Tosic <nemanja@bluesensenetworks.com>
 pkgname=bsn-supernode
 pkgver=1.0.3
-pkgrel=4
+pkgrel=1
 pkgdesc="The supernode application"
 arch=('armv7h' 'x86_64')
 url=""
@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=(
-  git+https://github.com/BlueSenseNetworks/hub-application.git#branch=master
+  git+https://github.com/BlueSenseNetworks/hub-application.git#tag=v${pkgver}
   bsn-supernode.service
   bsn-supernode.hook
   bsn-supernode-environment.path
