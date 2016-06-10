@@ -1,13 +1,13 @@
 # Maintainer: Your Name <nemanja@blusensenetworks.com>
 pkgname=bsn-base
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('armv7h' 'x86_64')
 url=""
 license=('GPL')
 groups=('bsn')
-depends=('python2' 'python2-setuptools')
+depends=('python2' 'python2-setuptools' 'parted')
 makedepends=()
 provides=()
 conflicts=()
