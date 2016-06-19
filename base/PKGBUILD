@@ -1,7 +1,7 @@
 # Maintainer: Your Name <nemanja@blusensenetworks.com>
 pkgname=bsn-base
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc=""
 arch=('armv7h' 'x86_64')
 url=""
@@ -12,7 +12,7 @@ makedepends=()
 provides=()
 conflicts=()
 replaces=()
-backup=()
+backup=('/etc/wpa_supplicant/wpa_supplicant-wlan0.conf')
 options=(!emptydirs)
 install=
 source=(
