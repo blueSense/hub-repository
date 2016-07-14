@@ -4,7 +4,7 @@ clean:
 build-packages: clean
 	cd base && makepkg -s --noconfirm || true;\
 	cd ../status-page && makepkg -s --noconfirm || true;\
-    cd ../autoupdate && makepkg -s --noconfirm || true;\
+	cd ../autoupdate && makepkg -s --noconfirm || true;\
 	cd ../supernode && makepkg -s --noconfirm || true;\
 	cd ../bluez4 && makepkg -s --noconfirm || true;\
 
