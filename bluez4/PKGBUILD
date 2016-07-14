@@ -5,7 +5,7 @@
 
 pkgname=bluez4
 pkgver=4.101
-pkgrel=3
+pkgrel=4
 pkgdesc="Libraries and tools for the Bluetooth protocol stack"
 url="http://www.bluez.org/"
 arch=('armv7h')
@@ -19,8 +19,7 @@ optdepends=("gstreamer0.10-base: bluetooth GStreamer support"
             "libusb-compat: USB adapters support"
             "cups: CUPS backend")
 conflicts=('bluez' 'bluez-libs' 'bluez-utils')
-provides=('bluez-libs' 'bluez-utils')
-replaces=('bluez-libs' 'bluez-utils')
+provides=('bluez4-libs' 'bluez4-utils')
 options=('!libtool')
 backup=(etc/bluetooth/{main,rfcomm,audio,network,input,serial}.conf
         'etc/conf.d/bluetooth' 'etc/dbus-1/system.d/bluetooth.conf')
