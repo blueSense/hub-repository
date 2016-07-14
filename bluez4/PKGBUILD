@@ -5,7 +5,7 @@
 
 pkgname=bluez4
 pkgver=4.101
-pkgrel=2
+pkgrel=3
 pkgdesc="Libraries and tools for the Bluetooth protocol stack"
 url="http://www.bluez.org/"
 arch=('armv7h')
@@ -18,7 +18,7 @@ optdepends=("gstreamer0.10-base: bluetooth GStreamer support"
             "python2-gobject: to run bluez-simple-agent"
             "libusb-compat: USB adapters support"
             "cups: CUPS backend")
-conflicts=('bluez-libs' 'bluez-utils')
+conflicts=('bluez' 'bluez-libs' 'bluez-utils')
 provides=('bluez-libs' 'bluez-utils')
 replaces=('bluez-libs' 'bluez-utils')
 options=('!libtool')
