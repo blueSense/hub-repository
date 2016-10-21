@@ -1,7 +1,7 @@
 # Maintainer: Your Name <nemanja@blusensenetworks.com>
 pkgname=bsn-base
-pkgver=0.0.1
-pkgrel=4
+pkgver=0.0.2
+pkgrel=1
 pkgdesc=""
 arch=('armv7h' 'x86_64')
 url=""
