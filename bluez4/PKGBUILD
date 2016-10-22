@@ -5,12 +5,12 @@
 
 pkgname=bluez4
 pkgver=4.101
-pkgrel=4
+pkgrel=5
 pkgdesc="Libraries and tools for the Bluetooth protocol stack"
 url="http://www.bluez.org/"
 arch=('armv7h')
 license=('GPL2')
-depends=('dbus-core' 'python2' 'systemd-tools')
+depends=('dbus' 'python2' 'systemd-tools')
 makedepends=('gstreamer0.10-base' 'libusb-compat' 'libsndfile' 'libusbx')
 optdepends=("gstreamer0.10-base: bluetooth GStreamer support"
             "alsa-lib: Audio bluetooth devices support"
