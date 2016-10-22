@@ -1,7 +1,7 @@
 # Maintainer: Your Name <nemanja@blusensenetworks.com>
 pkgname=bsn-base
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('armv7h' 'x86_64')
 url=""
@@ -12,7 +12,7 @@ makedepends=()
 provides=()
 conflicts=()
 replaces=()
-backup=('etc/wpa_supplicant/wpa_supplicant-wlan0.conf')
+backup=('etc/wpa_supplicant/wpa_supplicant-wlan0.conf' 'etc/bsn/bsn.ini')
 options=(!emptydirs)
 install=
 source=(
@@ -23,8 +23,10 @@ source=(
   restart-wpa_supplicant@.service
   bluetooth-auto-power@.service
   wpa_supplicant-wlan0.conf
+  bsn.ini
 )
 md5sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -45,4 +47,5 @@ package() {
   install -D -m644 "${srcdir}/restart-wpa_supplicant@.service" "${pkgdir}/usr/lib/systemd/system/restart-wpa_supplicant@.service"
   install -D -m644 "${srcdir}/bluetooth-auto-power@.service" "${pkgdir}/usr/lib/systemd/system/bluetooth-auto-power@.service"
   install -D -m644 "${srcdir}/wpa_supplicant-wlan0.conf" "${pkgdir}/etc/wpa_supplicant/wpa_supplicant-wlan0.conf"
+  install -D -m644 "${srcdir}/bsn.ini" "${pkgdir}/etc/bsn/bsn.ini"
 }
