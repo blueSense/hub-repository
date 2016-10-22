@@ -1,7 +1,7 @@
 # Maintainer: Nemanja Tosic <nemanja@bluesensenetworks.com>
 pkgname=bsn-supernode
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The supernode application"
 arch=('armv7h' 'x86_64')
 url=""
@@ -18,12 +18,10 @@ install=
 source=(
   git+https://github.com/BlueSenseNetworks/hub-application.git#tag=v${pkgver}
   bsn-supernode.service
-  bsn-supernode.hook
   bsn-supernode-environment.path
   bsn-supernode-environment.service
 )
 md5sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -34,7 +32,6 @@ package() {
   cd hub-application
 
   install -D -m644 "${srcdir}/bsn-supernode.service" "${pkgdir}/usr/lib/systemd/system/bsn-supernode.service"
-  install -D -m644 "${srcdir}/bsn-supernode.hook" "${pkgdir}/etc/pacman.d/hooks/bsn-supernode.hook"
   install -D -m644 "${srcdir}/bsn-supernode-environment.path" "${pkgdir}/usr/lib/systemd/system/bsn-supernode-environment.path"
   install -D -m644 "${srcdir}/bsn-supernode-environment.service" "${pkgdir}/usr/lib/systemd/system/bsn-supernode-environment.service"
 
