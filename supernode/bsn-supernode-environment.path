@@ -1,8 +1,0 @@
-[Unit]
-Description=Restart supernode if the environment changes
-
-[Path]
-PathChanged=/etc/environment
-
-[Install]
-WantedBy=multi-user.target
