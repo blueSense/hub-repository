@@ -1,13 +1,13 @@
 # Maintainer: Nemanja Tosic <nemanja@bluesensenetworks.com>
 pkgname=bsn-supernode
 pkgver=1.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="The supernode application"
 arch=('armv7h' 'x86_64')
 url=""
 license=('GPL')
 groups=('bsn')
-depends=('nodejs' 'redis' 'npm' 'bluez4' 'bluez4-utils')
+depends=('redis' 'bluez4' 'bluez4-utils')
 makedepends=()
 provides=()
 conflicts=()
